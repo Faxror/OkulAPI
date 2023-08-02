@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OkulYönetimAPI.DataAccess.Abstrack
 {
-    public interface ISchoolRepository
+    public interface IStudentRepository
     {
         Task<List<Students>> GETAllStudents();
 

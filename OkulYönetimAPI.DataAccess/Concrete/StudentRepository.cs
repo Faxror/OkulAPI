@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace OkulYönetimAPI.DataAccess.Concrete
 {
-    public class SchoolRepository : ISchoolRepository
+    public class StudentRepository : IStudentRepository
     {
         private readonly SchoolDBContext _dbContext;
 
-        public SchoolRepository(SchoolDBContext dbContext)
+        public StudentRepository(SchoolDBContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -37,41 +37,37 @@ namespace OkulYönetimAPI.DataAccess.Concrete
 
         public async Task<List<Students>> GETAllStudents()
         {
-            using (var  dbcontext = new SchoolDBContext())
-            {
-                return await dbcontext.Students.ToListAsync();
+         
+                return await _dbContext.Students.ToListAsync();
 
-            }
+            
         }
 
         public Students GetStudentsByID(int id)
         {
-            using (var dbcontext = new SchoolDBContext())
-            {
-                return  dbcontext.Students.Find(id);
+            
+                return _dbContext.Students.Find(id);
 
-            }
+            
         }
 
         public Students GetStudentsByName(string name)
         {
-            using (var dbcontext = new SchoolDBContext())
-            {
-                return  dbcontext.Students.FirstOrDefault(x => x.studentname.ToLower() == name.ToLower());
+            
+                return _dbContext.Students.FirstOrDefault(x => x.studentname.ToLower() == name.ToLower());
 
-            }
+            
         }
 
         
         public Students updatestudents(Students students)
         {
-            using (var dbcontext = new SchoolDBContext())
-            {
-                dbcontext.Students.Update(students);
-                dbcontext.SaveChanges();
+          
+                _dbContext.Students.Update(students);
+                _dbContext.SaveChanges();
                 return students;
 
-            }
+            
         }
     }
 }

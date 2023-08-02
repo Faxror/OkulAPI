@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OkulYönetimAPI.Business.Abstrack
 {
-    public interface ISchoolService
+    public interface IStudentService
     {
         Task<List<Students>> GETAllStudents();
 

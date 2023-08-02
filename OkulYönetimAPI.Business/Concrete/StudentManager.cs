@@ -9,12 +9,12 @@ using Azure;
 
 namespace OkulYönetimAPI.Business.Concrete
 {
-    public class SchoolManager : ISchoolService
+    public class StudentManager : IStudentService
     {
 
-        readonly ISchoolRepository _schoolRepository;
+        readonly IStudentRepository _schoolRepository;
 
-        public SchoolManager(ISchoolRepository schoolRepository)
+        public StudentManager(IStudentRepository schoolRepository)
         {
             _schoolRepository = schoolRepository;
         }

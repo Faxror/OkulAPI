@@ -9,11 +9,11 @@ namespace OkulYönetimAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SchoolController : ControllerBase
+    public class StudentController : ControllerBase
     {
-        public readonly ISchoolService _schoolService;
+        public readonly IStudentService _schoolService;
 
-        public SchoolController(ISchoolService schoolService)
+        public StudentController(IStudentService schoolService)
         {
             _schoolService = schoolService;
         }
@@ -24,7 +24,7 @@ namespace OkulYönetimAPI.Controllers
         {
      
 
-            return Ok(_schoolService.GETAllStudents());
+            return Ok(await _schoolService.GETAllStudents());
             
         }
 

@@ -13,7 +13,7 @@ namespace OkulYönetimAPI.DataAccess
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-I45D279;Initial Catalog=SchoolDBV3;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-N4SK79N;Initial Catalog=SchoolDBV3;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False");
            // optionsBuilder.UseSqlServer("server=DESKTOP-I45D279;database=SchoolDB; Integrated security=true");
         }
 
