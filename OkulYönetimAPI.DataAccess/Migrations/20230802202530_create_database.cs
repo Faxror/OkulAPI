@@ -5,7 +5,7 @@
 namespace OkulYönetimAPI.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_create_database : Migration
+    public partial class create_database : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,13 +14,15 @@ namespace OkulYönetimAPI.DataAccess.Migrations
                 name: "Schools",
                 columns: table => new
                 {
-                    ıd = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    schoolname = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    schoolname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    schooladress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    schoolphone = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Schools", x => x.ıd);
+                    table.PrimaryKey("PK_Schools", x => x.id);
                 });
 
             migrationBuilder.CreateTable(

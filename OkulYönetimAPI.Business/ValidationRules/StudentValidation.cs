@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using OkulYönetimAPI.Entity;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,7 @@ namespace OkulYönetimAPI.Business.ValidationRules
         {
             RuleFor(x => x.studentname).NotEmpty().WithMessage("İsim Alanı Boş Bırakılamaz.");
         }
+
+      
     }
 }

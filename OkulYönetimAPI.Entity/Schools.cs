@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace OkulYönetimAPI.Entity
 {
-    public class School 
+    public class Schools
     {
         [Key]
-        public int ıd { get; set; }
+        public int id { get; set; }
+
         public string schoolname { get; set; }
         public string schooladress { get; set; }
         public int schoolphone { get; set; }

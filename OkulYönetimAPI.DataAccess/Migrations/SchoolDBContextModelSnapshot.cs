@@ -21,13 +21,13 @@ namespace OkulYönetimAPI.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OkulYönetimAPI.Entity.School", b =>
+            modelBuilder.Entity("OkulYönetimAPI.Entity.Schools", b =>
                 {
-                    b.Property<int>("ıd")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ıd"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<string>("schooladress")
                         .IsRequired()
@@ -40,7 +40,7 @@ namespace OkulYönetimAPI.DataAccess.Migrations
                     b.Property<int>("schoolphone")
                         .HasColumnType("int");
 
-                    b.HasKey("ıd");
+                    b.HasKey("id");
 
                     b.ToTable("Schools");
                 });
