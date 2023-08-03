@@ -113,9 +113,20 @@ namespace OkulYönetimAPI.Business.Concrete
         public ValidationResponse<Students> updatestudents(Students students)
         {
 
+            string schoolName = students.studentschool;
+            string schoolteacher = students.aappointedteachers;
+
+
+            Schools existingSchool = _dBContext.Schools.FirstOrDefault(s => s.schoolname == schoolName);
+            Teachers exitingSt = _dBContext.Teachers.FirstOrDefault(c => c.teachername == schoolteacher);
+
+         
+
             StudentValidation validationRules = new StudentValidation();
             ValidationResult result = validationRules.Validate(students);
 
+            if (existingSchool != null) { 
+                if (exitingSt != null) { 
             if (!result.IsValid)
             {
                 var errorResponse = new ValidationResponse<Students>
@@ -145,6 +156,27 @@ namespace OkulYönetimAPI.Business.Concrete
                     Data = updatedSuccessfully
                 };
                 return sucessresponse;
+            }
+                }else
+                {
+                    return new ValidationResponse<Students>
+                    {
+                        Success = false,
+                        Message = new List<string> { "Rehberlik oğretmeni veri tabınında bulunamadı. Lütfen geçerli bir okul adı girin." },
+                        Data = null
+                    };
+
+                }
+            }
+            else
+            {
+
+                return new ValidationResponse<Students>
+                {
+                    Success = false,
+                    Message = new List<string> { "Öğrencinin okulu veri tabanında bulunamadı. Lütfen geçerli bir okul adı girin." },
+                    Data = null
+                };
             }
 
             return null;
