@@ -6,6 +6,8 @@ using OkulYönetimAPI.Entity;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.Mvc;
 using Azure;
+using Microsoft.EntityFrameworkCore;
+using OkulYönetimAPI.DataAccess;
 
 namespace OkulYönetimAPI.Business.Concrete
 {
@@ -13,36 +15,56 @@ namespace OkulYönetimAPI.Business.Concrete
     {
 
         readonly IStudentRepository _schoolRepository;
+        readonly SchoolDBContext _dBContext;
 
-        public StudentManager(IStudentRepository schoolRepository)
+        public StudentManager(IStudentRepository schoolRepository, SchoolDBContext dBContext)
         {
             _schoolRepository = schoolRepository;
+            _dBContext = dBContext;
         }
 
         public ValidationResponse<Students> createstudent(Students students)
         {
-            StudentValidation validationrules = new StudentValidation();
-            ValidationResult result = validationrules.Validate(students);
-            if (!result.IsValid)
+
+            string schoolName = students.studentschool;
+            
+
+            Schools existingSchool = _dBContext.Schools.FirstOrDefault(s => s.schoolname == schoolName); 
+
+            if (existingSchool != null) 
             {
+              
+                StudentValidation validationRules = new StudentValidation();
+                ValidationResult result = validationRules.Validate(students);
+                if (!result.IsValid)
+                {
+                    return new ValidationResponse<Students>
+                    {
+                        Success = false,
+                        Message = result.Errors.Select(c => c.ErrorMessage).ToList(),
+                        Data = null
+                    };
+                }
+
+               
+                var createdStudent = _schoolRepository.createstudent(students); // Burada eklemeyi gerçekleştiren _schoolRepository.CreateStudent() gibi bir metodu varsayıyoruz.
 
                 return new ValidationResponse<Students>
                 {
-                    Success = false,
-                    Message = result.Errors.Select(c => c.ErrorMessage).ToList(),
-                    Data = null
-                };               
+                    Success = true,
+                    Data = createdStudent
+                };
             }
-
-            var createdstudents = _schoolRepository.createstudent(students);
-
-            return new ValidationResponse<Students>
+            else 
             {
-                Success = false,
                
-                Data = students
-            };
-
+                return new ValidationResponse<Students>
+                {
+                    Success = false,
+                    Message = new List<string> { "Öğrencinin okulu veri tabanında bulunamadı. Lütfen geçerli bir okul adı girin." },
+                    Data = null
+                };
+            }
 
         }
 

@@ -15,5 +15,7 @@ namespace OkulYönetimAPI.Entity
         public string schoolname { get; set; }
         public string schooladress { get; set; }
         public int schoolphone { get; set; }
+
+
     }
 }

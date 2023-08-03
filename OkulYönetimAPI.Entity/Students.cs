@@ -20,5 +20,8 @@ namespace OkulYönetimAPI.Entity
         public string studentnumber { get; set; }
         
         public string studentschool { get; set; }
+
+
+
     }
 }
