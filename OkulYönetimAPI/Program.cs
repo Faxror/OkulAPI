@@ -26,6 +26,10 @@ builder.Services.AddScoped<ITeacherService, TeacherManager>();
 builder.Services.AddScoped<ITeachersRepository, TeacherRepository>();
 builder.Services.AddScoped<TeacherRepository>();
 
+builder.Services.AddScoped<ILessonsService, LessonsManager>();
+builder.Services.AddScoped<ILessonsRepository, LessonsRepository>();
+builder.Services.AddScoped<LessonsRepository>();
+
 builder.Services.AddDbContext<SchoolDBContext>();
 
 
