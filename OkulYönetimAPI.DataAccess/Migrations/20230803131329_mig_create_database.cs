@@ -5,7 +5,7 @@
 namespace OkulYönetimAPI.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class create_database : Migration
+    public partial class mig_create_database : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,11 +34,28 @@ namespace OkulYönetimAPI.DataAccess.Migrations
                     studentname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     studentsurname = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     studentnumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    studentschool = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    studentschool = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    aappointedteachers = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Students", x => x.ıd);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teachers",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    teachername = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    teachersurname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    teachernumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    teacheralan = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teachers", x => x.id);
                 });
         }
 
@@ -50,6 +67,9 @@ namespace OkulYönetimAPI.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
         }
     }
 }

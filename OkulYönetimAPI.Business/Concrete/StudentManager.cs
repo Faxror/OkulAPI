@@ -27,13 +27,15 @@ namespace OkulYönetimAPI.Business.Concrete
         {
 
             string schoolName = students.studentschool;
+            string schoolteacher = students.aappointedteachers;
             
 
-            Schools existingSchool = _dBContext.Schools.FirstOrDefault(s => s.schoolname == schoolName); 
+            Schools existingSchool = _dBContext.Schools.FirstOrDefault(s => s.schoolname == schoolName);
+            Teachers exitingSt = _dBContext.Teachers.FirstOrDefault(c => c.teachername == schoolteacher);
 
             if (existingSchool != null) 
             {
-              
+              if (exitingSt != null) { 
                 StudentValidation validationRules = new StudentValidation();
                 ValidationResult result = validationRules.Validate(students);
                 if (!result.IsValid)
@@ -47,13 +49,23 @@ namespace OkulYönetimAPI.Business.Concrete
                 }
 
                
-                var createdStudent = _schoolRepository.createstudent(students); // Burada eklemeyi gerçekleştiren _schoolRepository.CreateStudent() gibi bir metodu varsayıyoruz.
+                var createdStudent = _schoolRepository.createstudent(students);
 
                 return new ValidationResponse<Students>
                 {
                     Success = true,
                     Data = createdStudent
                 };
+                }
+              else
+                {
+                    return new ValidationResponse<Students>
+                    {
+                        Success = false,
+                        Message = new List<string> { "Rehberlik oğretmeni veri tabınında bulunamadı. Lütfen geçerli bir okul adı girin." },
+                        Data = null
+                    };
+                }
             }
             else 
             {

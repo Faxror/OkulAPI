@@ -21,6 +21,8 @@ namespace OkulYönetimAPI.Entity
         
         public string studentschool { get; set; }
 
+        public string aappointedteachers { get; set; }
+
 
 
     }

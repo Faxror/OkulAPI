@@ -53,10 +53,7 @@ namespace OkulYönetimAPI.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ıd"));
 
-                    b.Property<int>("Schoolsid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("schoolname")
+                    b.Property<string>("aappointedteachers")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -77,8 +74,6 @@ namespace OkulYönetimAPI.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ıd");
-
-                    b.HasIndex("Schoolsid");
 
                     b.ToTable("Students");
                 });
@@ -110,22 +105,6 @@ namespace OkulYönetimAPI.DataAccess.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Teachers");
-                });
-
-            modelBuilder.Entity("OkulYönetimAPI.Entity.Students", b =>
-                {
-                    b.HasOne("OkulYönetimAPI.Entity.Schools", "Schools")
-                        .WithMany("Students")
-                        .HasForeignKey("Schoolsid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Schools");
-                });
-
-            modelBuilder.Entity("OkulYönetimAPI.Entity.Schools", b =>
-                {
-                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }
