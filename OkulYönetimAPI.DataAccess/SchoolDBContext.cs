@@ -20,6 +20,7 @@ namespace OkulYönetimAPI.DataAccess
 
 
         public DbSet<Schools> Schools { get; set; }
+        public DbSet<Teachers> Teachers { get; set; }
         //public DbSet<BaseEntity> BaseEntities { get; set; }
         public DbSet<Students> Students { get; set; }
     }
