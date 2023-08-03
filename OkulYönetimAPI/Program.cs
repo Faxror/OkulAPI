@@ -18,9 +18,14 @@ builder.Services.AddScoped<IStudentService, StudentManager>();
 builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 builder.Services.AddScoped<StudentRepository>();
 
-    builder.Services.AddScoped<ISchoolService, SchoolManager>();
+builder.Services.AddScoped<ISchoolService, SchoolManager>();
 builder.Services.AddScoped<ISchoolRepository, SchoolRepository>();
 builder.Services.AddScoped<SchoolRepository>();
+
+builder.Services.AddScoped<ITeacherService, TeacherManager>();
+builder.Services.AddScoped<ITeachersRepository, TeacherRepository>();
+builder.Services.AddScoped<TeacherRepository>();
+
 builder.Services.AddDbContext<SchoolDBContext>();
 
 
