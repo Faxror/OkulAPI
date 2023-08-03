@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using OkulYönetimAPI.Business.Abstrack;
 using OkulYönetimAPI.Business.ValidationRules;
+using OkulYönetimAPI.DataAccess;
 using OkulYönetimAPI.DataAccess.Abstrack;
 using OkulYönetimAPI.DataAccess.Concrete;
 using OkulYönetimAPI.Entity;
@@ -16,15 +17,24 @@ namespace OkulYönetimAPI.Business.Concrete
     {
         private readonly ITeachersRepository _teachersRepository;
 
-        public TeacherManager(ITeachersRepository teachersRepository)
+        private readonly SchoolDBContext _context;
+
+        public TeacherManager(ITeachersRepository teachersRepository, SchoolDBContext context)
         {
             _teachersRepository = teachersRepository;
+            _context = context;
         }
 
         public ValidationResponse<Teachers> createteacher(Teachers teachers)
         {
+
+            string lessons = teachers.teacheralan;
+
+            Lessons exitigionLessons = _context.Lessons.FirstOrDefault(c => c.lessons == lessons);
+
             TeacherValidation validationrules = new TeacherValidation();
             ValidationResult result = validationrules.Validate(teachers);
+            if(exitigionLessons != null) { 
             if (!result.IsValid)
             {
 
@@ -44,6 +54,16 @@ namespace OkulYönetimAPI.Business.Concrete
 
                 Data = teachers
             };
+            }
+            else
+            {
+                return new ValidationResponse<Teachers>
+                {
+                    Success = false,
+                    Message = new List<string> { "Oğretmenin alanı veri tabanında bulunamadı. Lütfen geçerli bir okul adı girin." },
+                    Data = null
+                };
+            }
         }
 
         public void deleteteacher(int id)
@@ -72,10 +92,13 @@ namespace OkulYönetimAPI.Business.Concrete
 
         public ValidationResponse<Teachers> updateteacher(Teachers teachers)
         {
+            string lessons = teachers.teacheralan;
+
+            Lessons exitigionLessons = _context.Lessons.FirstOrDefault(c => c.lessons == lessons);
 
             TeacherValidation validationRules = new TeacherValidation();
             ValidationResult result = validationRules.Validate(teachers);
-
+             if(exitigionLessons != null) { 
             if (!result.IsValid)
             {
                 var errorResponse = new ValidationResponse<Teachers>
@@ -105,8 +128,18 @@ namespace OkulYönetimAPI.Business.Concrete
                     Data = updatedSuccessfully
                 };
                 return sucessresponse;
+            } 
+             
             }
-
+            else
+            {
+                return new ValidationResponse<Teachers>
+                {
+                    Success = false,
+                    Message = new List<string> { "Oğretmenin alanı veri tabanında bulunamadı. Lütfen geçerli bir okul adı girin." },
+                    Data = null
+                };
+            }
             return null;
 
         }
