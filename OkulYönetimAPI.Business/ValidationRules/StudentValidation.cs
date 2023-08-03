@@ -13,7 +13,10 @@ namespace OkulYönetimAPI.Business.ValidationRules
     {
         public StudentValidation()
         {
-            RuleFor(x => x.studentname).NotEmpty().WithMessage("İsim Alanı Boş Bırakılamaz.");
+            RuleFor(x => x.studentname).NotEmpty().WithMessage("İsim alanı boş bırakılamaz.");
+            RuleFor(x => x.studentsurname).NotEmpty().WithMessage("Soyisim alanı boş bırakılamaz.");
+            RuleFor(x => x.studentnumber).NotEmpty().WithMessage("Numara alanı boş bırakılamaz.");
+            RuleFor(x => x.studentschool).NotEmpty().WithMessage("Okul ismi alanı boş bırakılamaz.");
         }
 
       

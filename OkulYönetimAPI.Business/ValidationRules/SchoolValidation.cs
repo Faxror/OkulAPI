@@ -12,9 +12,9 @@ namespace OkulYönetimAPI.Business.ValidationRules
     {
         public SchoolValidation()
         {
-            RuleFor(x => x.schoolname).NotEmpty().WithMessage("İsim Alanı Boş Bırakılamaz.");
-            RuleFor(x => x.schooladress).NotEmpty().WithMessage("İsim Alanı Boş Bırakılamaz.");
-            RuleFor(x => x.schoolphone).NotEmpty().WithMessage("İsim Alanı Boş Bırakılamaz.");
+            RuleFor(x => x.schoolname).NotEmpty().WithMessage("Okul ismi alanı boş bırakılamaz.");
+            RuleFor(x => x.schooladress).NotEmpty().WithMessage("Okul adress alanı boş bırakılamaz.");
+            RuleFor(x => x.schoolphone).NotEmpty().WithMessage("Okul numarası alanı boş bırakılamaz.");
         }
     }
 }
