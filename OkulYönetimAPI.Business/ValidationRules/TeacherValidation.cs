@@ -17,6 +17,7 @@ namespace OkulYönetimAPI.Business.ValidationRules
             RuleFor(x => x.teachersurname).NotEmpty().WithMessage("Oğretmen soyisim alanı boş bırakılamaz.");
             RuleFor(x => x.teachernumber).NotEmpty().WithMessage("Oğretmen numarası alanı boş bırakılamaz.");
             RuleFor(x => x.teacheralan).NotEmpty().WithMessage("Oğretmen ders alanı boş bırakılamaz.");
+            RuleFor(x => x.teacherpermissions).NotEmpty().WithMessage("Oğretmen yetki alanı boş bırakılamaz.");
         }
     }
 }

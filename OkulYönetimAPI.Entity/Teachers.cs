@@ -17,5 +17,6 @@ namespace OkulYönetimAPI.Entity
         public string teachernumber { get; set; }
 
         public string teacheralan { get; set; }
+        public string teacherpermissions { get; set; }
     }
 }
