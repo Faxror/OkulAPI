@@ -14,6 +14,8 @@ namespace OkulYönetimAPI.Entity
 
         public string teachersurname { get; set; }
 
-        public int teachernumber { get; set; }
+        public string teachernumber { get; set; }
+
+        public string teacheralan { get; set; }
     }
 }
