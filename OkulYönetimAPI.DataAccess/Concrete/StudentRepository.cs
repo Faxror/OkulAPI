@@ -62,12 +62,31 @@ namespace OkulYönetimAPI.DataAccess.Concrete
         
         public Students updatestudents(Students students)
         {
-          
-                _dbContext.Students.Update(students);
-                _dbContext.SaveChanges();
-                return students;
 
-            
+            try
+            {
+                var existingstudent = _dbContext.Students.Find(students.ıd);
+
+                if (existingstudent != null)
+                {
+                    // Copy the updated values to the existing entity
+                    _dbContext.Entry(existingstudent).CurrentValues.SetValues(students);
+
+                    _dbContext.SaveChanges();
+                    return existingstudent;
+                }
+                else
+                {
+                    // Handle the case where the school doesn't exist
+                    return null; // or throw an exception, return an error message, etc.
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex; // Consider logging the exception or handling it in a more appropriate way
+            }
+
+
         }
     }
 }
