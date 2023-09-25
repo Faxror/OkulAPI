@@ -12,7 +12,6 @@ namespace OkulYönetimAPI.Entity
         [Key]
         public int ıd { get; set; }
 
-        
         public string studentname { get; set; }
         
         public string studentsurname { get; set; }
@@ -26,6 +25,8 @@ namespace OkulYönetimAPI.Entity
         public string studentsclassnumber { get; set; }
 
         public string studentslevel { get; set; }
+        public int IdentıtyNumber { get; set; }
+        public int Password { get; set; }
 
     }
 }
