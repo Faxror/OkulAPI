@@ -4,6 +4,8 @@ using OkulYönetimAPI.Entity;
 
 namespace OkulYönetimAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class HomeworkandExamsController : Controller
     {
         private readonly IHomeworkandExamsService examsService;

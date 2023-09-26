@@ -31,7 +31,7 @@ namespace OkulYönetimAPI.Entity
         public string examnotesthree { get; set; }
         public string examnotestfour { get; set; }
         public string homeworks { get; set; }
-        public int IdentıtyNumber { get; set; }
+        public string IdentıtyNumber { get; set; }
         public int StudentsPassword { get; set; }
 
       
