@@ -23,11 +23,13 @@ namespace OkulYönetimAPI.DataAccess
 
             optionsBuilder.UseNpgsql("Server=localhost;Port=5434;Database=SchoolAdministratorV1;User Id=postgres;Password=Asdfgh7890;");
         }
-   
+
+        
 
         public DbSet<Schools> Schools { get; set; }
         public DbSet<Teachers> Teachers { get; set; }
         public DbSet<Lessons> Lessons { get; set; }
         public DbSet<Students> Students { get; set; }
+        public DbSet<HomeworkandExams> HomeworkandExams { get; set; }
     }
 }

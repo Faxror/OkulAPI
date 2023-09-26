@@ -3,6 +3,7 @@ using OkulYönetimAPI.Business.Concrete;
 using OkulYönetimAPI.DataAccess;
 using OkulYönetimAPI.DataAccess.Abstrack;
 using OkulYönetimAPI.DataAccess.Concrete;
+using OkulYönetimAPI.Entity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,11 @@ builder.Services.AddScoped<TeacherRepository>();
 builder.Services.AddScoped<ILessonsService, LessonsManager>();
 builder.Services.AddScoped<ILessonsRepository, LessonsRepository>();
 builder.Services.AddScoped<LessonsRepository>();
+
+
+builder.Services.AddScoped<IHomeworkandExamsService, HomeworksandExams>();
+builder.Services.AddScoped<IHomeWorksandExamsRepository, HomeworksandExamsRepository>();
+builder.Services.AddScoped<HomeworksandExamsRepository>();
 
 builder.Services.AddDbContext<SchoolDBContext>();
 

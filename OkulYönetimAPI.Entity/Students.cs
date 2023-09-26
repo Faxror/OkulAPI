@@ -25,8 +25,16 @@ namespace OkulYönetimAPI.Entity
         public string studentsclassnumber { get; set; }
 
         public string studentslevel { get; set; }
+
+        public string examnotesone { get; set; }
+        public string examnotestwo { get; set; }
+        public string examnotesthree { get; set; }
+        public string examnotestfour { get; set; }
+        public string homeworks { get; set; }
         public int IdentıtyNumber { get; set; }
-        public int Password { get; set; }
+        public int StudentsPassword { get; set; }
+
+      
 
     }
 }

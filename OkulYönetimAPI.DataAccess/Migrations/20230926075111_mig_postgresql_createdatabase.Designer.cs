@@ -11,8 +11,8 @@ using OkulYönetimAPI.DataAccess;
 namespace OkulYönetimAPI.DataAccess.Migrations
 {
     [DbContext(typeof(SchoolDBContext))]
-    [Migration("20230925213159_mig_createpostrogsql_v1")]
-    partial class mig_createpostrogsql_v1
+    [Migration("20230926075111_mig_postgresql_createdatabase")]
+    partial class mig_postgresql_createdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,7 +73,21 @@ namespace OkulYönetimAPI.DataAccess.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ıd"));
 
+                    b.Property<int>("IdentıtyNumber")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StudentsPassword")
+                        .HasColumnType("integer");
+
                     b.Property<string>("aappointedteachers")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("examnotes")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("homeworks")
                         .IsRequired()
                         .HasColumnType("text");
 

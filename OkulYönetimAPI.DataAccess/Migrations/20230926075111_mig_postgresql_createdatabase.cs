@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace OkulYönetimAPI.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_createpostrogsql_v1 : Migration
+    public partial class mig_postgresql_createdatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,7 +51,11 @@ namespace OkulYönetimAPI.DataAccess.Migrations
                     studentschool = table.Column<string>(type: "text", nullable: false),
                     aappointedteachers = table.Column<string>(type: "text", nullable: false),
                     studentsclassnumber = table.Column<string>(type: "text", nullable: false),
-                    studentslevel = table.Column<string>(type: "text", nullable: false)
+                    studentslevel = table.Column<string>(type: "text", nullable: false),
+                    examnotes = table.Column<string>(type: "text", nullable: false),
+                    homeworks = table.Column<string>(type: "text", nullable: false),
+                    IdentıtyNumber = table.Column<int>(type: "integer", nullable: false),
+                    StudentsPassword = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
