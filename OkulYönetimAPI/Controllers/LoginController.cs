@@ -22,6 +22,24 @@ using OkulYönetimAPI.Entity;
             this.dBContext = dBContext;
         }
 
+
+
+        [HttpPost("LoginUpdate")]
+        private IActionResult Update(string İdentityRed, int PasswordRed)
+        {
+            var student = dBContext.Students;
+
+            if(student == null || string.IsNullOrWhiteSpace(İdentityRed) || PasswordRed == 0)
+            {
+                return BadRequest("Identity No or Password is requierd");
+            }
+
+
+
+            return View();
+        }
+
+
         [HttpPost("Login")]
             public IActionResult Login( string İdentity, int password)
             {
@@ -43,5 +61,7 @@ using OkulYönetimAPI.Entity;
 
                 return View();
             }
+
+
         }
     }
