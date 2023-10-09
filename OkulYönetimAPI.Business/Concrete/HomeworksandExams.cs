@@ -22,10 +22,11 @@ namespace OkulYönetimAPI.Business.Concrete
             this.dbContext = dbContext;
         }
 
-        public HomeworkandExams createhomeworkandexams(HomeworkandExams homeworkAndExams, string name)
+        public HomeworkandExams createhomeworkandexams(HomeworkandExams homeworkAndExams,string lessonsname, string name)
         {
             
             var student = dbContext.Students.FirstOrDefault(s => s.studentname == name);
+            //var ders = dbContext.Lessons.FirstOrDefault(c => c.lessons == lessonsname);
 
             if (student == null)
             {
@@ -42,6 +43,8 @@ namespace OkulYönetimAPI.Business.Concrete
             student.examnotesthree = homeworkAndExams.examnotethree;
             student.examnotestfour = homeworkAndExams.examnotefour;
             student.homeworks = homeworkAndExams.homeworks;
+            
+
 
             dbContext.SaveChanges();
 

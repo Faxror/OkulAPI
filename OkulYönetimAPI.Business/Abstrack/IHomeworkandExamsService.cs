@@ -15,7 +15,7 @@ namespace OkulYönetimAPI.Business.Abstrack
 
         HomeworkandExams GetHomeworkandExamsByName(string name);
 
-        HomeworkandExams createhomeworkandexams(HomeworkandExams homeworkandExams, string name);
+        HomeworkandExams createhomeworkandexams(HomeworkandExams homeworkAndExams, string lessonsname, string name);
 
         HomeworkandExams updatehomeworkandexams(HomeworkandExams homeworkandExams);
 

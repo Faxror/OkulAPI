@@ -9,7 +9,7 @@ namespace OkulYönetimAPI.Business.Abstrack
 {
     public interface ILoginService
     {
-        Students login(Students students, string identity, int password);
+        Students login(string identity, int password);
 
         void deletedaccount(int id);
 

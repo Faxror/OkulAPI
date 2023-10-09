@@ -15,6 +15,8 @@ namespace OkulYönetimAPI.Entity
         public string examnotethree { get; set; }
         public string examnotefour { get; set; }
 
+        public string lessonsname { get; set; }
+
         public string homeworks { get; set; }
 
        

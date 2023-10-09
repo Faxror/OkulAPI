@@ -37,6 +37,10 @@ builder.Services.AddScoped<IHomeworkandExamsService, HomeworksandExams>();
 builder.Services.AddScoped<IHomeWorksandExamsRepository, HomeworksandExamsRepository>();
 builder.Services.AddScoped<HomeworksandExamsRepository>();
 
+builder.Services.AddScoped<ILoginService, LoginManager>();
+builder.Services.AddScoped<ILoginAndRegisterRepository, LoginAndRegisterRepository>();
+builder.Services.AddScoped<LoginAndRegisterRepository>();
+
 builder.Services.AddDbContext<SchoolDBContext>();
 
 builder.Services.AddSwaggerGen(c => {

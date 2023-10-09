@@ -16,11 +16,11 @@ namespace OkulYönetimAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Post([FromBody] HomeworkandExams stu, string name)
+        public IActionResult Post([FromBody] HomeworkandExams stu, string lesssonsname, string name)
         {
             try
             {
-                var createdStudent = examsService.createhomeworkandexams(stu, name);
+                var createdStudent = examsService.createhomeworkandexams(stu, lesssonsname, name);
                 return Ok(createdStudent);
             }
             catch (Exception ex)
