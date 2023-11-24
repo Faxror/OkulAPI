@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using OkulYönetimAPI.Business.Abstrack;
 using OkulYönetimAPI.Business.Concrete;
 using OkulYönetimAPI.DataAccess;
+using OkulYönetimAPI.DataAccess.Abstrack;
 using OkulYönetimAPI.Entity;
+using OkulYönetimAPI.Models;
 
-    namespace OkulYönetimAPI.Controllers
+namespace OkulYönetimAPI.Controllers
     {
         [Route("api/[controller]")]
         [ApiController]
@@ -15,6 +17,8 @@ using OkulYönetimAPI.Entity;
             private readonly ILoginService _loginManager;
 
             private readonly SchoolDBContext dBContext;
+
+            private readonly ILoginAndRegisterRepository _loginRepository;
 
         public LoginController(ILoginService loginManager, SchoolDBContext dBContext)
         {
@@ -40,28 +44,25 @@ using OkulYönetimAPI.Entity;
         }
 
 
-        [HttpPost("Login")]
-            public IActionResult Login( string İdentity, int password)
+        [HttpPost("login")]
+        public IActionResult Login([FromBody] Students loginRequest)
+        {
+
+           
+           
+            LoginManager loginManager = new LoginManager(_loginRepository, dBContext);
+
+            var response = loginManager.login(loginRequest.IdentıtyNumber, loginRequest.StudentsPassword);
+
+            if (response.Success)
             {
-                  var students = dBContext.Students;
-                if  (students == null || string.IsNullOrWhiteSpace(İdentity) || password == 0)
-                {
-                    return BadRequest("Identity NO or Password is requierd");
-                }
-
-                var stu = _loginManager.login(İdentity, password);
-
-                if (stu == null)
-                {
-                    return Unauthorized("Geçersiz kimlik veya şifre.");
-                }
-
-            
-                return Ok("Başarılı giriş!");
-
-                return View();
+                return Ok(response);
             }
-
-
+            else
+            {
+                return BadRequest(response); 
+            }
         }
+
+    }
     }

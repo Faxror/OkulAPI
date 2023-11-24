@@ -1,4 +1,5 @@
-﻿using OkulYönetimAPI.Entity;
+﻿using OkulYönetimAPI.Business.Concrete;
+using OkulYönetimAPI.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace OkulYönetimAPI.Business.Abstrack
 {
     public interface ILoginService
     {
-        Students login(string identity, int password);
+        ValidationResponse<Students> login(string identity, int password);
 
         void deletedaccount(int id);
 

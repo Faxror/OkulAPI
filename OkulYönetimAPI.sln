@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OkulYönetimAPI", "OkulYönetimAPI\OkulYönetimAPI.csproj", "{C8A140FF-28F9-449C-8A72-334DC96C4C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OkulYönetimAPI", "OkulYönetimAPI\OkulYönetimAPI.csproj", "{C8A140FF-28F9-449C-8A72-334DC96C4C19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OkulYönetimAPI.Entity", "OkulYönetimAPI.Entity\OkulYönetimAPI.Entity.csproj", "{D4B93868-AD40-4B87-BBF9-2A2A78F86239}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OkulYönetimAPI.Entity", "OkulYönetimAPI.Entity\OkulYönetimAPI.Entity.csproj", "{D4B93868-AD40-4B87-BBF9-2A2A78F86239}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OkulYönetimAPI.DataAccess", "OkulYönetimAPI.DataAccess\OkulYönetimAPI.DataAccess.csproj", "{66CCDC8A-F2FE-49C6-96D1-3844922E25F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OkulYönetimAPI.DataAccess", "OkulYönetimAPI.DataAccess\OkulYönetimAPI.DataAccess.csproj", "{66CCDC8A-F2FE-49C6-96D1-3844922E25F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OkulYönetimAPI.Business", "OkulYönetimAPI.Business\OkulYönetimAPI.Business.csproj", "{9C80CBEC-999C-4D19-8D7E-A9DF6E77DE73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OkulYönetimAPI.Business", "OkulYönetimAPI.Business\OkulYönetimAPI.Business.csproj", "{9C80CBEC-999C-4D19-8D7E-A9DF6E77DE73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{B0622120-47E8-4814-910B-EE35DE94E30C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9C80CBEC-999C-4D19-8D7E-A9DF6E77DE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C80CBEC-999C-4D19-8D7E-A9DF6E77DE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C80CBEC-999C-4D19-8D7E-A9DF6E77DE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0622120-47E8-4814-910B-EE35DE94E30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0622120-47E8-4814-910B-EE35DE94E30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0622120-47E8-4814-910B-EE35DE94E30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0622120-47E8-4814-910B-EE35DE94E30C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,19 +32,28 @@ namespace OkulYönetimAPI.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Students login(string identity, int password)
+        public ValidationResponse<Students> login(string identity, int password)
         {
-            // Find the student with the given identity in the database
             var student = dBContext.Students.FirstOrDefault(s => s.IdentıtyNumber == identity);
 
-            // If a student with the provided identity is found and the password matches, return the student
             if (student != null && student.StudentsPassword == password)
             {
-                return student;
+                return new ValidationResponse<Students>
+                {
+                    Success = true,
+                    Data = student
+                };
             }
-
-            // If no matching student or incorrect password, return null
-            return null;
+            else
+            {
+                // Failed login
+                return new ValidationResponse<Students>
+                {
+                    Success = false,
+                    Message = new List<string> { "T.C Kimlik no veya şifreniz hatalı." },
+                    Data = null 
+                };
+            }
         }
 
       
